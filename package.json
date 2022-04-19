@@ -1,0 +1,16 @@
+{
+  "name": "digipet1-durham-main",
+  "version": "1.0.0",
+  "description": "Digital Pet",
+  "type": "module",
+  "main": "script.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "Jaideep",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
