@@ -1,4 +1,4 @@
-import {petElements,htmlElements} from '/tamogotchi-virtual-pet/js/components.js'
+import {petElements,htmlElements} from '/tamogotchi-virtual-pet/js/components.js';
 
 //* ES6 Class for pet 
 class Tamogotchi{
@@ -6,6 +6,7 @@ class Tamogotchi{
         this.petName = tamoName;
         this.initialFood = 60;
         this.metabolismRate = 1000;
+        
         // load and store the data from json
         fetch(dataSource)
         .then(response => response.json())
@@ -15,6 +16,7 @@ class Tamogotchi{
             this.complimentList = data.petCompliments;
         })
         .catch(err => console.log(err));
+
         this.disableBtn();
         this.transformOriginSet();
         this.floating();
@@ -24,16 +26,17 @@ class Tamogotchi{
     newGame(){
         htmlElements.pharseHeading.innerHTML = "PET SAYS";
         htmlElements.userName.value="";
+
         this.food=this.initialFood;
         this.metabolismRate=1000;
+
         // reset functions
         this.vitoAlive()
         this.neutralState()
         clearInterval(this.metabolism)
         clearInterval(this.myTreat)
         this.fetchdata();
-        this.disableBtn(); 
-        this.emptyInputField()
+        this.disableBtn();
         htmlElements.foodPoints.innerHTML=this.food;
     }
 
@@ -73,11 +76,11 @@ class Tamogotchi{
         this.vitoAlive()
         this.startMetabolism()
         this.neutralState()
-        this.emptyInputField()
     }
 
     startMetabolism(){
-        this.enableBtn()
+        this.enableBtn();
+
         this.metabolism = setInterval(()=> {
             this.food--;
             htmlElements.foodPoints.innerHTML=this.food;
@@ -85,10 +88,6 @@ class Tamogotchi{
                 this.die();
             }
         },this.metabolismRate);
-    }
-
-    emptyInputField(){
-        htmlElements.pharsesDisplay.innerHTML=""
     }
 
     die(){
@@ -105,8 +104,8 @@ class Tamogotchi{
         let personCompliment = this.complimentList[Math.floor(this.complimentList.length*Math.random())];
         let nameWithCompliment = personCompliment.compliment.replace('userName', personName);
         document.getElementById("pharsesDisplay").innerHTML = nameWithCompliment;
+
         this.startTalking();
-        setTimeout(this.emptyInputField,5000)
     }
 
     // * Feeding random food to pet 
@@ -134,12 +133,11 @@ class Tamogotchi{
                 newFoodEat.innerText = `Eww ${foodToEat.foodItem} was horribe. I lost ${foodToEat.foodValue} points.`
                 gsap.delayedCall(2,this.sickFace)
                 gsap.delayedCall(4.5,this.neutralState);
-                setTimeout(this.emptyInputField,5000);
+    ;
             } else{
-                // If Pet ate healthy food
-                this.food += foodToEat.foodValue;
-                newFoodEat.innerText = `Yummy ! ${foodToEat.foodItem} was delicious. I gained ${foodToEat.foodValue} points.`
-                setTimeout(this.emptyInputField,5000);
+                    // If Pet ate healthy food
+                    this.food += foodToEat.foodValue;
+                    newFoodEat.innerText = `Yummy ! ${foodToEat.foodItem} was delicious. I gained ${foodToEat.foodValue} points.`;
                 }
             this.startTalking();
         }
@@ -153,7 +151,6 @@ class Tamogotchi{
         htmlElements.pharsesDisplay.innerHTML = "Ahha! I am feeling dizzy. Now my metabolism is slowed down,I can wait for the food"
         console.log(this.metabolismRate);
         this.startMetabolism();
-        setTimeout(this.emptyInputField,5000)
     }
     
     // * Speeding up the Pet's metabolism
@@ -164,7 +161,6 @@ class Tamogotchi{
         console.log(this.metabolismRate);
         this.startTalking();
         this.startMetabolism();
-        setTimeout(this.emptyInputField,5000)
     }
 
     // * FEAST MODE where pet will eat all the food available
@@ -178,7 +174,7 @@ class Tamogotchi{
         };
     }
 
-    // ******************************* PET'S ANIMATIONS  **********************************/
+    // ******************************* PET ANIMATIONS  **********************************/
 
     // * SET TRANSFORM ORIGIN OF TARGETS FOR ROTATION 
     transformOriginSet () {
@@ -582,12 +578,13 @@ class Tamogotchi{
     // **** Pet Sayings according to its mood ****
     petExpressions(mood){
         let petMood = this.moodList.filter(item => item.mood == `${mood}`);
+
         let randomIndex = Math.floor(Math.random()*petMood.length);
         htmlElements.pharsesDisplay.innerHTML = petMood[randomIndex].speak;
+        
         if(mood == "angry" || "jokey"){
             this.tailShaking()
         }
-        setTimeout(this.emptyInputField,5000)
     }
 
     happyMoodExpression(){
