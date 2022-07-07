@@ -1,5 +1,6 @@
-html{
-  background-image:url(../img/Memariani.jpg)
+body{
+  background-image:url(../img/Memariani.jpg);
+  background-size:cover
 }
 *{
   font-family: 'Montserrat', sans-serif !important; 
