@@ -608,12 +608,28 @@ class Tamogotchi{
     }
 
     //Disabling all the buttons before game starts
-    disableBtn() {
-        document.getElementsByClassName("class-btn").disabled = true;
+   disableBtn() {
+        document.getElementById("feedPet").disabled = true;
+        document.getElementById("increaseMetabolism").disabled = true;
+        document.getElementById("decreaseMetabolism").disabled = true;
+        document.getElementById("happyMood").disabled = true;
+        document.getElementById("angryMood").disabled = true;
+        document.getElementById("sadMood").disabled = true;
+        document.getElementById("jokeyMood").disabled = true;
+        document.getElementById("feastMode").disabled = true;
+        document.getElementById("complimentButton").disabled = true;
     }
 
     enableBtn() {
-        document.getElementsByClassName("class-btn").disabled = false;
+        document.getElementById("feedPet").disabled = false;
+        document.getElementById("increaseMetabolism").disabled = false;
+        document.getElementById("decreaseMetabolism").disabled = false;
+        document.getElementById("happyMood").disabled = false;
+        document.getElementById("angryMood").disabled = false;
+        document.getElementById("sadMood").disabled = false;
+        document.getElementById("jokeyMood").disabled = false;
+        document.getElementById("feastMode").disabled = false;
+        document.getElementById("complimentButton").disabled = false;
     }
 }
 
